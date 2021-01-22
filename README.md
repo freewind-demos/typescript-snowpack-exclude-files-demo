@@ -1,13 +1,21 @@
-TypeScript Snowpack React Demo
+TypeScript Snowpack Exclude Files Demo
 =================================
 
-使用snowpack来开发react，体验不错，配置简单、速度快、fast refresh
+Snowpack会把mount范围内的每一个可能的文件都编译为esm以供使用浏览器使用。
 
-注意：导入文件时大小写一定要完全匹配，否则修改后不生效，卡了几个小时
+如果某个文件中包含了对node的引用，将会报错。如果那个文件不会被真的使用到，可以把它exclude掉。
+
+注意exclude的时候，其路径不是以项目根目录为根，而是以mount之后的目录为根。
 
 ```
 npm install
 npm run demo
 ```
 
-It will open page on browser automatically.
+将会在build下生成最终文件。
+
+如果exclude不对，将会报错，如：
+
+```
+[snowpack] Package "path" not found. Have you installed it? 
+```
